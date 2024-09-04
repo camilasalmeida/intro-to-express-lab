@@ -71,7 +71,9 @@ app.get('/collectibles/:indexNumber', (req, res) => {
     res.send(`So you want the ${collectible.name}? For ${collectible.price}, it can be yours!`);
 });
 
-//**--------------------------------exercise 4---------------------------------** 
+//**--------------------------------exercise 4: ---------------------------------** 
+//It needs to be reviewed
+
 /* 4. Filter Shoes by Query Parameters
 Use the following array of shoes in this challenge:
   const shoes = [
