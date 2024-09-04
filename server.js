@@ -90,6 +90,7 @@ max-price: Excludes shoes above this price.
 type: Shows only shoes of the specified type.
 No parameters: Responds with the full list of shoes.
 */
+
 const shoes = [
     { name: "Birkenstocks", price: 50, type: "sandal" },
     { name: "Air Jordans", price: 500, type: "sneaker" },
@@ -100,23 +101,24 @@ const shoes = [
     { name: "Fifty-Inch Heels", price: 175, type: "heel" }
 ];
 
-app.get('/shoes', (req, res) => {
-    if ( ) {
+app.get('/shoes', (req,res) => {
+    //res.send('<h1>This is the shoes page!</h1>');
+    // console.log(req.query);
+    // console.log(req.query.minprice);
+    // console.log(req.query.maxprice);
+    //console.log(req.query.type);
 
+    const minPrice = parseFloat(req.query['min-price']) || 0;
+    const maxPrice = parseFloat(req.query['max-price']) || Infinity;
+    const type = req.query.type || null;
 
-
-
-    } else {
-
-
-    }
-    
-
-
-
-});
-
-
+    let filteredShoes = shoes.filter(shoe => 
+        shoe.price >= minPrice &&
+        shoe.price <= maxPrice &&
+        (type === null || shoe.type === type)
+    );
+    res.send(filteredShoes); 
+ });
 
 
 // Start server
